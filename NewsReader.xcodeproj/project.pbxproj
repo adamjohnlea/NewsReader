@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		DE1167E225FAAA0200C9D6D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1167E125FAAA0200C9D6D6 /* ContentView.swift */; };
 		DE1167E425FAAA0400C9D6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1167E325FAAA0400C9D6D6 /* Assets.xcassets */; };
 		DE1167E725FAAA0400C9D6D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1167E625FAAA0400C9D6D6 /* Preview Assets.xcassets */; };
+		DE1167F625FABD3700C9D6D6 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = DE1167F525FABD3700C9D6D6 /* URLImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1167F625FABD3700C9D6D6 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +87,9 @@
 			dependencies = (
 			);
 			name = NewsReader;
+			packageProductDependencies = (
+				DE1167F525FABD3700C9D6D6 /* URLImage */,
+			);
 			productName = NewsReader;
 			productReference = DE1167DC25FAAA0200C9D6D6 /* NewsReader.app */;
 			productType = "com.apple.product-type.application";
@@ -112,6 +117,9 @@
 				Base,
 			);
 			mainGroup = DE1167D325FAAA0200C9D6D6;
+			packageReferences = (
+				DE1167F425FABD3700C9D6D6 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = DE1167DD25FAAA0200C9D6D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -328,6 +336,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DE1167F425FABD3700C9D6D6 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = exactVersion;
+				version = 0.9.19;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DE1167F525FABD3700C9D6D6 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE1167F425FABD3700C9D6D6 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DE1167D425FAAA0200C9D6D6 /* Project object */;
 }
