@@ -54,6 +54,10 @@ struct ContentView: View {
             HStack(alignment: .top) {
                 URLImage(
                     (( URL(string: item.urlToImage ?? "https://picsum.photos/100") ?? nil )!),
+                    delay: 0.25,
+                    processors: [Resize(size:
+                                        CGSize(width: 100.0, height: 100.0),
+                                        scale: UIScreen.main.scale)],
                     content: { image in
                         image.image
                             .resizable()
