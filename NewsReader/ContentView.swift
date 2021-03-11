@@ -22,7 +22,7 @@ struct Article: Codable {
 
 
 struct ContentView: View {
-    private let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4d28f8ee0b8547a38f797128a567e5b1"
+    private let url = "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=4d28f8ee0b8547a38f797128a567e5b1"
 
     @State private var articles = [Article]()
     
@@ -50,31 +50,37 @@ struct ContentView: View {
     }
     
     var body: some View {
-        List(articles, id: \.url) { item in
-            HStack(alignment: .top) {
-                URLImage(
-                    (( URL(string: item.urlToImage ?? "https://picsum.photos/100") ?? nil )!),
-                    delay: 0.25,
-                    processors: [Resize(size:
-                                        CGSize(width: 100.0, height: 100.0),
-                                        scale: UIScreen.main.scale)],
-                    content: { image in
-                        image.image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipped()
+        NavigationView {
+            List(articles, id: \.url) { item in
+                NavigationLink(destination: NewsView(url: item.url)) {
+                    HStack(alignment: .top) {
+                        URLImage(
+                            (( URL(string: item.urlToImage ?? "https://picsum.photos/100") ?? nil )!),
+                            delay: 0.25,
+                            processors: [Resize(size:
+                                                CGSize(width: 100.0, height: 100.0),
+                                                scale: UIScreen.main.scale)],
+                            content: { image in
+                                image.image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipped()
+                            }
+                        ).frame(width: 100.0, height: 100.0)
+                        
+                        VStack(alignment: .leading) {
+                            Text(item.title)
+                                .font(.headline)
+                            Text(item.description ?? "")
+                                .font(.footnote)
+                        }
                     }
-                ).frame(width: 100.0, height: 100.0)
-                
-                VStack(alignment: .leading) {
-                    Text(item.title)
-                        .font(.headline)
-                    Text(item.description ?? "")
-                        .font(.footnote)
                 }
-            }
-            
-        }.onAppear(perform: fetchData)
+                
+            }.onAppear(perform: fetchData)
+            .navigationTitle("News Headlines")
+            .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 
